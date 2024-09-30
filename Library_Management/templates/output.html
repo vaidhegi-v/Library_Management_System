@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    {% if res1 %}
+        <h3>Welcome Admin</h3>
+        <form action="/Add Books">
+        <input type="submit" value="Add Book">
+        </form><br>
+        <form action="/Add Fine">
+        <input type="submit" value="Add Fine">
+        </form>
+    {% endif %}
+
+    {% if res2 %}
+    <h3>Book was added successfully</h3>
+    <form action="/Add Books">
+        <input type="submit" value="Back">
+    </form>
+    {% endif %}
+    
+    {% if res3 %}
+    <form action="/Take">
+        <h3>{{bname}} book is available</h3>
+        <input type="submit" value="Take Book">
+    </form><br>
+    <form action="/User Main">
+        <input type="submit" value="Back">
+    </form>
+    {% endif %}
+
+    {% if res4 %}
+    <h3>Return the book within 10 days otherwise you will pay fine 25 per each seperate days.</h3>
+    <a href="/User Main"></a>
+    {% endif %}
+
+    {% if res6 %}
+    {%for i in fine%}
+    <h3>Your fine amount for late submission of book is {{i}}</h3>
+    <h4>pay fine and return the book</h4>
+    {% endfor %}
+    <form action="/User Main">
+    <input type="submit" value="Back">
+    </form>
+    {% endif %}
+
+    {% if res7%}
+    <form action="/Paid" method="post">
+        <label for="bname">Book Name</label>
+        <input type="text" name="bname" id="bname">
+        <label for="author">Author</label>
+        <input type="text" name="author" id="author">
+        <label for="fine">Fine</label>
+        <input type="text" name="fine" id="fine">
+        <input type="submit" value="Pay Fine">
+    </form>
+    {% endif %}
+
+    {% if res8 %}
+    <h3>Fine paid successfully</h3>
+    <form action="/Return">
+        <input type="submit" value="Return Book">
+    </form>
+    {% endif %}
+</body>
+</html>
